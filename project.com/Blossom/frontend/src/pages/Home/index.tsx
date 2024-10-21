@@ -20,9 +20,17 @@ const HomePage: React.FC = () => {
           bgcolor="transparent"
           padding="5rem"
         >
-          <TitleTypography>Add Your Notes Anytime, Anywhere</TitleTypography>
-          <Typography fontSize="2rem" fontWeight={400}>
-            Keep track of your thoughts, to-dos, and ideas with our NotesSphere  app.
+          <TitleTypography>Add Your Notes            Anytime, Anywhere</TitleTypography>
+          <Typography
+            fontSize="3rem"
+            fontWeight={400}
+            color="#000039"
+            sx={{
+              WebkitTextStroke: "0.6px",  // Adding black border around text
+              WebkitTextStrokeColor: "white", // Black stroke color
+            }}
+          >
+            Keep track of your thoughts, to-dos, and ideas with our NotesSphere app.
           </Typography>
         </Box>
         <Stack direction="row" gap="1rem">
@@ -50,11 +58,11 @@ export const TitleTypography: React.FC<TypographyProps> = (props) => {
       variant="h3"
       fontSize="7rem"
       fontWeight={600}
-      sx={({ palette }) => ({
-        // WebkitTextFillColor: palette.background.default,
-        WebkitTextStroke: "1px",
-        WebkitTextStrokeColor: palette.secondary.main,
-      })}
+      color="#000039"  // Text color
+      sx={{
+        WebkitTextStroke: "2px",  // Adding black border around text
+        WebkitTextStrokeColor: "white", // Black stroke color for better visibility
+      }}
       {...props}
     >
       {props.children}

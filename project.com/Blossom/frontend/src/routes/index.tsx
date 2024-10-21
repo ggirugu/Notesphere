@@ -27,7 +27,7 @@ const AppRoutes: React.FC = () => {
           children: [
             {
               index: true,
-              element: <SignInPage vendor />,
+              element: <SignInPage vendor={true} />,
             },
             {
               path: "sign-up",
