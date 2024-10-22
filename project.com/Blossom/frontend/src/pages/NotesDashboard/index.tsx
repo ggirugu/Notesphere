@@ -256,12 +256,16 @@ const NotesDashboard: React.FC = () => {
 
                   <Card.Title>{note.title}</Card.Title>
                   <Card.Text>
-                    {viewingNoteId === note._id
-                      ? note.content
-                      : note.content.length > 30
-                        ? `${note.content.substring(0, 30)}...`
-                        : note.content}
+                    {viewingNoteId === note._id ? (
+                      <>
+                        {note.content} <br />
+                        <small><strong>Created on:</strong> {new Date(note.date).toLocaleString()}</small> {/* Show date and time */}
+                      </>
+                    ) : (
+                      note.content.length > 30 ? `${note.content.substring(0, 30)}...` : note.content
+                    )}
                   </Card.Text>
+
                   <Button variant="info" className="me-2" onClick={() => handleViewNote(note._id)}>
                     {viewingNoteId === note._id ? 'Hide' : 'View'}
                   </Button>
@@ -322,12 +326,17 @@ const NotesDashboard: React.FC = () => {
                 <Form.Control
                   as="textarea"
                   rows={5}
-                  maxLength={500}
-                  placeholder="Enter content (max 500 characters)"
                   value={newNote.content}
-                  onChange={e => setNewNote({ ...newNote, content: e.target.value })}
+                  onChange={e => {
+                    if (e.target.value.length <= 200) {
+                      setNewNote({ ...newNote, content: e.target.value });
+                    }
+                  }}
+                  placeholder="Enter content (max 200 characters)"
                 />
-                <Form.Text className="text-muted">{newNote.content.length}/500 characters</Form.Text>
+                <Form.Text className="text-muted">
+                  {newNote.content.length}/200 characters
+                </Form.Text>
               </Form.Group>
               <Form.Group controlId="formCategory" className="mb-3">
                 <Form.Label>Category</Form.Label>
